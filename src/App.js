@@ -262,6 +262,7 @@ const DivButton = styled.div`
 
 function App() {
     const [dropDownMenuIsShowed, setDropDownMenuIsShowed] = useState(false)
+    const [formIsSubmited, setFormIsSubmited] = useState(false)
     const [searchTerm, setSearchTerm] = useState([])
     const [valueOFSearchInput, setValueOFSearchInput] = useState('')
 
@@ -294,6 +295,7 @@ function App() {
             qualification: returnEl(6),
             checkbox: e.target[7].checked
         }]))
+        setFormIsSubmited(true)
     }
 
     const validate = (event, reg, setIsShowed) => {
@@ -393,10 +395,15 @@ function App() {
                     <input type={'checkbox'} id={'Checkbox'}/>
                     <label htmlFor={'Checkbox'}>Нострификация</label>
                 </DivCheckbox>
-                <DivWithSpans>
-                    <span>Документ: </span>Загрузить файлы или<span> открыть проводник</span>
-                </DivWithSpans>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
+                {formIsSubmited ?
+                    <DivWithSpans>
+                        <span>Документ: </span>Скачать документ
+                    </DivWithSpans> :
+                    <DivWithSpans>
+                        <span>Документ: </span>Загрузить файлы или<span> открыть проводник</span>
+                    </DivWithSpans>
+                }
+                {formIsSubmited ? null : <div style={{display: 'flex', justifyContent: 'center'}}>
                     <DivButton>
                         <button type={'submit'}>Сохранить</button>
                         <div>
@@ -411,7 +418,7 @@ function App() {
                             <p>Поля обязательные для заполнения</p>
                         </div>
                     </DivButton>
-                </div>
+                </div>}
             </FormWrapper>
             {info ? info.map(i => <div>
                 <div>selector: {i.selector}</div>
