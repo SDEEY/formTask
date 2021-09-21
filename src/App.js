@@ -299,21 +299,21 @@ function App() {
     }
 
     const validate = (event, reg, setIsShowed) => {
-        if (reg.toString() === '/^[0-9]+$/') {
-            if (reg.test(event.target.value)) {
-                if (setIsShowed) {
-                    setIsShowed(true)
-                }
-            } else {
-                alert('Use only numbers')
-            }
-        } else if (reg.toString() === '/^[а-яА-ЯёЁa-zA-Z]+$/') {
+        if (reg.toString() === '/^[а-яА-ЯёЁa-zA-Z]+$/') {
             if (reg.test(event.target.value)) {
                 if (setIsShowed) {
                     setIsShowed(true)
                 }
             } else {
                 alert('Use only letters')
+            }
+        } else if (reg.toString() === '/^[0-9]+$/') {
+            if (reg.test(event.target.value)) {
+                if (setIsShowed) {
+                    setIsShowed(true)
+                }
+            } else {
+                alert('Use only numbers')
             }
         }
     }
