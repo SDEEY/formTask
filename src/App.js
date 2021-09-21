@@ -316,7 +316,6 @@ function App() {
                 alert('Use only letters')
             }
         }
-
     }
 
     const validateInputSearch = (event) => {
